@@ -1,0 +1,58 @@
+{
+  "Routes": [
+    {
+      "DownstreamPathTemplate": "/api/Authentication/login",
+      "DownstreamScheme": "http",
+      "SwaggerKey": "apiuser",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5184
+        }
+      ],
+      "UpstreamPathTemplate": "/api/Authentication/login",
+      "UpstreamHttpMethod": [ "Post" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/Users",
+      "DownstreamScheme": "http",
+      "SwaggerKey": "apiuser",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5184
+        }
+      ],
+      "UpstreamPathTemplate": "/api/Users",
+      "UpstreamHttpMethod": [ "Get", "Post" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/Users/{id}",
+      "DownstreamScheme": "http",
+      "SwaggerKey": "apiuser",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5184
+        }
+      ],
+      "UpstreamPathTemplate": "/api/Users/{id}",
+      "UpstreamHttpMethod": [ "Get", "Put", "Delete" ]
+    }
+  ],
+  "SwaggerEndPoints": [
+    {
+      "Key": "apiuser",
+      "Config": [
+        {
+          "Name": "ApiUser",
+          "Version": "v1",
+          "Url": "http://localhost:5184/swagger/v1/swagger.json"
+        }
+      ]
+    }
+  ],
+  "GlobalConfiguration": {
+    "BaseUrl": "https://localhost:5000"
+  }
+}
