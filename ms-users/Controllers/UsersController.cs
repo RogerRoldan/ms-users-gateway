@@ -61,6 +61,8 @@ namespace ms_users.Controllers
                 return BadRequest();
             }
 
+            user.Password = _serviceCryptography.GenerateHash(user.Password);
+
             _context.Entry(user).State = EntityState.Modified;
 
             try
