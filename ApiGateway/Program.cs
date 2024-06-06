@@ -14,8 +14,22 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddSwaggerForOcelot(builder.Configuration);
 
+// Configura CORS para permitir solo solicitudes desde localhost:3000
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowSpecificOrigin", builder =>
+    {
+        builder.WithOrigins("http://localhost:3000")
+               .AllowAnyMethod()
+               .AllowAnyHeader();
+    });
+});
+
 // Construye la aplicación
 var app = builder.Build();
+
+// Usa el middleware de CORS con la política especificada
+app.UseCors("AllowSpecificOrigin");
 
 // Configura la UI de Swagger para Ocelot
 app.UseSwaggerForOcelotUI(options =>
